@@ -11,7 +11,7 @@ def cargar_datos():
     with open(ARCHIVO, "r") as archivo:
         try:
             return json.load(archivo)
-        except:
+        except json.JSONDecodeError:
             return []
 
 

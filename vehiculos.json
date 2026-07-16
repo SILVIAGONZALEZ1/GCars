@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "marca": "Ford",
+        "modelo": "Basico",
+        "kilometraje": "10000",
+        "precio": "2000000",
+        "patente": "NBL919"
+    }
+]
