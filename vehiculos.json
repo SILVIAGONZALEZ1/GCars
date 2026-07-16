@@ -5,5 +5,12 @@
         "kilometraje": "10000",
         "precio": "2000000",
         "patente": "NBL919"
+    },
+    {
+        "marca": "Ford",
+        "modelo": "Classic",
+        "kilometraje": 88555,
+        "precio": 520000.0,
+        "patente": "jjk987"
     }
 ]
