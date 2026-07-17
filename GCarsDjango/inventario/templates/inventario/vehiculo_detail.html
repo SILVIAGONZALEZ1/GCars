@@ -1,0 +1,26 @@
+{% extends "inventario/base.html" %} {% block title %}{{ vehiculo.patente }} -
+GCars{% endblock %} {% block content %}
+<h2>Detalles del Vehículo</h2>
+
+<div class="detail-view">
+  <div class="detail-item">
+    <strong>Patente:</strong> {{ vehiculo.patente }}
+  </div>
+  <div class="detail-item"><strong>Marca:</strong> {{ vehiculo.marca }}</div>
+  <div class="detail-item"><strong>Modelo:</strong> {{ vehiculo.modelo }}</div>
+  <div class="detail-item">
+    <strong>Kilometraje:</strong> {{ vehiculo.kilometraje }} km
+  </div>
+  <div class="detail-item"><strong>Precio:</strong> ${{ vehiculo.precio }}</div>
+
+  <div class="button-group">
+    <a href="{% url 'vehiculo_update' vehiculo.pk %}" class="btn btn-success"
+      >Editar</a
+    >
+    <a href="{% url 'vehiculo_delete' vehiculo.pk %}" class="btn btn-danger"
+      >Eliminar</a
+    >
+    <a href="{% url 'vehiculo_list' %}" class="btn btn-secondary">Volver</a>
+  </div>
+</div>
+{% endblock %}

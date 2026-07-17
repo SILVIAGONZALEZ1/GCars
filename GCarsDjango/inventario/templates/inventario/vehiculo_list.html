@@ -1,0 +1,56 @@
+{% extends "inventario/base.html" %} {% block title %}Lista de Vehículos -
+GCars{% endblock %} {% block content %}
+<h2>Vehículos Registrados</h2>
+
+{% if vehiculos %}
+<table>
+  <thead>
+    <tr>
+      <th>Patente</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Kilometraje (km)</th>
+      <th>Precio ($)</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for vehiculo in vehiculos %}
+    <tr>
+      <td><strong>{{ vehiculo.patente }}</strong></td>
+      <td>{{ vehiculo.marca }}</td>
+      <td>{{ vehiculo.modelo }}</td>
+      <td>{{ vehiculo.kilometraje }}</td>
+      <td>${{ vehiculo.precio }}</td>
+      <td>
+        <a
+          href="{% url 'vehiculo_detail' vehiculo.pk %}"
+          class="btn btn-primary"
+          >Ver</a
+        >
+        <a
+          href="{% url 'vehiculo_update' vehiculo.pk %}"
+          class="btn btn-success"
+          >Editar</a
+        >
+        <a href="{% url 'vehiculo_delete' vehiculo.pk %}" class="btn btn-danger"
+          >Eliminar</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="message error">
+  No hay vehículos registrados.
+  <a href="{% url 'vehiculo_create' %}">Agregar uno aquí</a>.
+</div>
+{% endif %}
+
+<div style="margin-top: 20px">
+  <a href="{% url 'vehiculo_create' %}" class="btn btn-success"
+    >Agregar Nuevo Vehículo</a
+  >
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "inventario/base.html" %} {% block title %}Eliminar Vehículo -
+GCars{% endblock %} {% block content %}
+<h2>Eliminar Vehículo</h2>
+
+<div
+  class="detail-view"
+  style="background-color: #fff3cd; border: 1px solid #ffc107"
+>
+  <div style="color: #856404; margin-bottom: 20px">
+    <strong>⚠️ Advertencia:</strong> Está a punto de eliminar el siguiente
+    vehículo. Esta acción no se puede deshacer.
+  </div>
+
+  <div class="detail-item">
+    <strong>Patente:</strong> {{ vehiculo.patente }}
+  </div>
+  <div class="detail-item"><strong>Marca:</strong> {{ vehiculo.marca }}</div>
+  <div class="detail-item"><strong>Modelo:</strong> {{ vehiculo.modelo }}</div>
+  <div class="detail-item">
+    <strong>Kilometraje:</strong> {{ vehiculo.kilometraje }} km
+  </div>
+  <div class="detail-item"><strong>Precio:</strong> ${{ vehiculo.precio }}</div>
+
+  <form method="post" style="margin-top: 20px">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+    <a href="{% url 'vehiculo_list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

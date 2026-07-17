@@ -1,0 +1,30 @@
+{% extends "inventario/base.html" %} {% block title %}{% if form.instance.pk
+%}Editar{% else %}Nuevo{% endif %} Vehículo - GCars{% endblock %} {% block
+content %}
+<h2>
+  {% if form.instance.pk %}Editar Vehículo{% else %}Nuevo Vehículo{% endif %}
+</h2>
+
+<form method="post">
+  {% csrf_token %} {% if form.non_field_errors %}
+  <div class="message error">
+    {% for error in form.non_field_errors %} {{ error }} {% endfor %}
+  </div>
+  {% endif %} {% for field in form %}
+  <div class="form-group">
+    {{ field.label_tag }} {{ field }} {% if field.errors %}
+    <div style="color: #e74c3c; margin-top: 5px">
+      {% for error in field.errors %} {{ error }} {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  <div style="margin-top: 20px">
+    <button type="submit" class="btn btn-success">
+      {% if form.instance.pk %}Actualizar{% else %}Guardar{% endif %}
+    </button>
+    <a href="{% url 'vehiculo_list' %}" class="btn btn-secondary">Cancelar</a>
+  </div>
+</form>
+{% endblock %}
